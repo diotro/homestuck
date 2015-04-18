@@ -1,0 +1,79 @@
+<html>
+<head>
+<script type="text/javascript">
+var queue = [];
+var listOfBoxes = ['box0','box1','box2','box3','box4'];
+function pushToQueue(item)
+{
+    var itemToBeAdded = item;
+    if (queue.length < 5)
+    {
+        queue.push(itemToBeAdded);
+    }
+    else
+    {
+        queue.shift();
+        queue.push(itemToBeAdded);
+    }
+    drawCurrentQueue();
+
+}
+function drawCurrentQueue()
+{    
+    // blank out all the boxes
+    for(var j = 0, lenj = listOfBoxes.length; j < lenj; j++)
+    {
+        document.getElementById(listOfBoxes[j]).innerHTML = "&nbsp;";
+    }
+    
+    // populate boxes
+    for(var i = 0, len = queue.length; i < len; i++)
+    {
+        document.getElementById(listOfBoxes[i]).innerHTML = queue[i];
+    }
+}
+
+</script>
+<style>
+
+body {
+    background-color: lightblue;
+}
+.queuebox {
+    border-color: fff;
+    border-style: dotted;
+    border-width: 1;
+    width: 60;
+    height: 20;
+}
+</style>
+</head>
+
+<body>
+1: 
+<div id='box0' class='queuebox'></div>
+2: 
+<div id='box1' class='queuebox'></div>
+3: 
+<div id='box2' class='queuebox'></div>
+4: 
+<div id='box3' class='queuebox'></div>
+5: 
+<div id='box4' class='queuebox'></div>
+
+<p>
+&nbsp;
+</p>
+<p>
+Populate the captchalogue in queue modus
+</p>
+<form>
+<input type="button" onclick="pushToQueue('pillow');" id="add" value="pillow">
+<input type="button" onclick="pushToQueue('Harlequin');" id="add" value="silly clown">
+<input type="button" onclick="pushToQueue('japery');" id="add" value="japery">
+<input type="button" onclick="pushToQueue('shenanigans');" id="add" value="shenanigans">
+<input type="button" onclick="pushToQueue('Rufioh');" id="add" value="Rufioh">
+<input type="button" onclick="pushToQueue('umbrella');" id="add" value="umbrella">
+</form>
+</body>
+</html>
