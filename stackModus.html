@@ -1,0 +1,91 @@
+<html>
+<head>
+<script type="text/javascript">
+var stack = [];
+function pushToStack(item)
+{    
+    var itemToBeAdded = item;
+    if (stack.length < 5)
+    {
+        stack.push(itemToBeAdded);
+    }
+    else
+    {
+        stack.pop();
+        stack.push(itemToBeAdded);
+    }
+    
+    drawCurrentStack();
+}
+
+function popOffStack()
+{
+    stack.pop();
+    drawCurrentStack();
+}
+
+function drawCurrentStack()
+{
+    var listOfBoxes = ['box0','box1','box2','box3','box4']
+    
+    // blank out all the boxes
+    for(var j = 0, lenj = listOfBoxes.length; j < lenj; j++)
+    {
+        document.getElementById(listOfBoxes[j]).innerHTML = "&nbsp;";
+    }
+    
+    // populate boxes
+    for(var i = 0, len = stack.length; i < len; i++)
+    {
+        document.getElementById(listOfBoxes[i]).innerHTML = stack[i];
+    }
+}
+
+</script>
+<style>
+
+body {
+    background-color: lightblue;
+}
+.stackbox {
+    border-color: fff;
+    border-style: dotted;
+    border-width: 1;
+    width: 60;
+    height: 20;
+}
+</style>
+</head>
+
+<body>
+1: 
+<div id='box0' class='stackbox'></div>
+2: 
+<div id='box1' class='stackbox'></div>
+3: 
+<div id='box2' class='stackbox'></div>
+4: 
+<div id='box3' class='stackbox'></div>
+5: 
+<div id='box4' class='stackbox'></div>
+
+<p>
+&nbsp;
+</p>
+<p>
+Populate the captchalogue in stack modus
+</p>
+<form>
+<input type="button" onclick="pushToStack('pillow');" id="add" value="pillow">
+<input type="button" onclick="pushToStack('Harlequin');" id="add" value="silly clown">
+<input type="button" onclick="pushToStack('japery');" id="add" value="japery">
+<input type="button" onclick="pushToStack('shenanigans');" id="add" value="shenanigans">
+<input type="button" onclick="pushToStack('Rufioh');" id="add" value="Rufioh">
+<input type="button" onclick="pushToStack('umbrella');" id="add" value="umbrella">
+<p>
+OR
+</p>
+<input type="button" onclick="popOffStack();" id="pop" value="pop off this stack">
+</form>
+</body>
+</html>
